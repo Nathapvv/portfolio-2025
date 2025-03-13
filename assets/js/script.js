@@ -136,24 +136,35 @@ for (let i = 0; i < formInputs.length; i++) {
 
 
 
-// page navigation variables
+// Fonction pour normaliser le texte (supprimer les accents et mettre en minuscule)
+const normalizeText = (text) => {
+  return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+};
+
+// Sélection des liens de navigation et des pages
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
+// Ajouter un événement "click" à chaque lien de navigation
+navigationLinks.forEach(link => {
+  link.addEventListener("click", function () {
+    const selectedPage = normalizeText(this.innerText); // Normalisation du texte du bouton
 
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
+    pages.forEach(page => {
+      const pageName = normalizeText(page.dataset.page); // Normalisation du nom de la page
+
+      if (selectedPage === pageName) {
+        page.classList.add("active");
       } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+        page.classList.remove("active");
       }
-    }
+    });
 
+    // Mettre à jour l'état actif des liens de navigation
+    navigationLinks.forEach(nav => nav.classList.remove("active"));
+    this.classList.add("active");
+
+    // Remonter en haut de la page
+    window.scrollTo(0, 0);
   });
-}
+});

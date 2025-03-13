@@ -1840,6 +1840,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   .info-content .name {
     white-space: nowrap;
     text-align: center;
+    font-size: 20px;
   }
 
   .info-content .title { margin: auto; }
@@ -1878,5 +1879,13 @@ textarea.form-input::-webkit-resizer { display: none; }
 	 */
 
   .timeline-text { max-width: 700px; }
+
+
+  .navbar-link.disabled {
+    color: grey !important;
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: default;
+  }
 
 }

@@ -655,6 +655,18 @@ main {
   pointer-events: all;
 }
 
+/* Project overlay specific styles */
+[data-project-overlay] {
+  background: hsl(0, 0%, 5%);
+  pointer-events: all;
+}
+
+[data-project-overlay].active {
+  opacity: 0.8;
+  background: hsl(0, 0%, 5%);
+  pointer-events: all;
+}
+
 .testimonials-modal {
   background: var(--eerie-black-2);
   position: relative;
@@ -1888,4 +1900,238 @@ textarea.form-input::-webkit-resizer { display: none; }
     cursor: default;
   }
 
+}
+
+
+
+
+
+/*-----------------------------------*\
+  #PROJECT MODAL
+\*-----------------------------------*/
+
+.project-modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-2);
+  padding: 15px;
+  overflow: auto;
+}
+
+.project-modal-container.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Prevent body scroll when modal is active */
+body.modal-open {
+  overflow: hidden;
+}
+
+.project-modal {
+  background: var(--eerie-black-2);
+  border: 1px solid var(--jet);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  transform: scale(0.7);
+  transition: var(--transition-2);
+  box-shadow: var(--shadow-5);
+  z-index: 1001;
+}
+
+.project-modal .modal-content {
+  min-height: 400px;
+}
+
+.project-modal .project-details {
+  min-height: 400px;
+}
+
+/* Force scrollbar to appear */
+.project-modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.project-modal::-webkit-scrollbar-track {
+  background: var(--jet);
+  border-radius: 4px;
+}
+
+.project-modal::-webkit-scrollbar-thumb {
+  background: var(--orange-yellow-crayola);
+  border-radius: 4px;
+}
+
+.project-modal::-webkit-scrollbar-thumb:hover {
+  background: var(--vegas-gold);
+}
+
+.project-modal-container.active .project-modal {
+  transform: scale(1);
+}
+
+.project-modal .modal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--border-gradient-onyx);
+  border: 1px solid var(--jet);
+  border-radius: 8px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--light-gray);
+  font-size: 18px;
+  transition: var(--transition-1);
+}
+
+.project-modal .modal-close-btn:hover {
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+}
+
+.project-modal .modal-title {
+  margin-bottom: 20px;
+  color: var(--orange-yellow-crayola);
+  text-align: center;
+}
+
+.project-modal-image {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.project-modal-image img {
+  border-radius: 12px;
+  max-width: 100%;
+  height: auto;
+}
+
+.project-modal-description,
+.project-modal-skills,
+.project-modal-rncp,
+.project-modal-links {
+  margin-bottom: 20px;
+}
+
+.project-modal-description h5,
+.project-modal-skills h5,
+.project-modal-rncp h5 {
+  color: var(--orange-yellow-crayola);
+  margin-bottom: 10px;
+  font-size: var(--fs-4);
+  font-weight: var(--fw-600);
+}
+
+.project-modal-description p {
+  color: var(--light-gray);
+  line-height: 1.6;
+  font-size: var(--fs-5);
+}
+
+.skills-container,
+.rncp-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag,
+.rncp-tag {
+  background: var(--border-gradient-onyx);
+  border: 1px solid var(--jet);
+  border-radius: 20px;
+  padding: 6px 12px;
+  color: var(--light-gray);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-500);
+  transition: var(--transition-1);
+}
+
+.skill-tag:hover,
+.rncp-tag:hover {
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  border-color: var(--orange-yellow-crayola);
+}
+
+.rncp-tag {
+  background: var(--bg-gradient-yellow-1);
+  border-color: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  font-weight: var(--fw-600);
+}
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--border-gradient-onyx);
+  border: 1px solid var(--jet);
+  border-radius: 8px;
+  padding: 12px 20px;
+  color: var(--light-gray);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-500);
+  transition: var(--transition-1);
+}
+
+.github-link:hover {
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  border-color: var(--orange-yellow-crayola);
+}
+
+.github-link ion-icon {
+  font-size: 18px;
+}
+
+/* Responsive adjustments for project modal */
+@media (min-width: 580px) {
+  .project-modal {
+    padding: 40px;
+    height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .project-modal .modal-close-btn {
+    top: 20px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (min-width: 768px) {
+  .project-modal {
+    padding: 50px;
+    height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .skills-container {
+    gap: 10px;
+  }
+  
+  .skill-tag {
+    padding: 8px 16px;
+    font-size: var(--fs-6);
+  }
 }

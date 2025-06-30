@@ -118,7 +118,7 @@ const projectData = {
       "Intégration de systèmes et services"
     ],
     github: "https://github.com/miage-amiens-organization/2024_M2_PRO-03_GR10",
-    image: "./assets/images/project-1.jpg"
+    image: "./assets/images/fuelbot.png"
   },
   "billet-express": {
     title: "BilletExpress",
@@ -132,7 +132,7 @@ const projectData = {
       "Gestion de bases de données et systèmes d'information"
     ],
     github: "https://github.com/miage-amiens-organization/2023_M1_PRO-05_GR16",
-    image: "./assets/images/project-2.png"
+    image: "./assets/images/billetexpress.png"
   },
   portfolio: {
     title: "Portfolio",
@@ -145,7 +145,7 @@ const projectData = {
       "Communication et présentation de projets"
     ],
     github: "https://github.com/Nathapvv/portfolio-2025",
-    image: "./assets/images/project-3.jpg"
+    image: "./assets/images/portfolio.png"
   }
 };
 
